@@ -8,6 +8,8 @@ build/
 .eggs/
 
 # Virtual environment
+.venv/
+.venv-1/
 venv/
 .env
 
