@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environment
+venv/
+.env
+
+# IDE
+.vscode/
+.idea/
+
+# Data
+data/uploads/*
+data/processed/*
+data/chroma_db/*
+!data/uploads/.gitkeep
+!data/processed/.gitkeep
+!data/chroma_db/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
