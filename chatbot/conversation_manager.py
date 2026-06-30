@@ -1,16 +1,40 @@
 """
-Manages active chat sessions and conversation history.
+Gestionnaire des conversations.
 """
 
-class ConversationManager:
-    def __init__(self):
-        self.history = []
 
-    def add_message(self, role: str, content: str):
-        self.history.append({"role": role, "content": content})
+class ConversationManager:
+
+    def __init__(self):
+
+        self.messages = []
+
+    def add_user_message(self, message: str):
+
+        self.messages.append(
+
+            {
+                "role": "user",
+                "content": message,
+            }
+
+        )
+
+    def add_assistant_message(self, message: str):
+
+        self.messages.append(
+
+            {
+                "role": "assistant",
+                "content": message,
+            }
+
+        )
 
     def get_history(self):
-        return self.history
 
-    def clear_history(self):
-        self.history = []
+        return self.messages
+
+    def clear(self):
+
+        self.messages.clear()

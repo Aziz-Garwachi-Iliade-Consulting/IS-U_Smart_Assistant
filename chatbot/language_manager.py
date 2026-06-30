@@ -1,14 +1,30 @@
 """
-Handles localization and multilingual support (e.g. French, English).
+Détection des langues.
 """
 
+
 class LanguageManager:
-    def __init__(self, default_lang="fr"):
-        self.current_lang = default_lang
 
-    def set_language(self, lang: str):
-        self.current_lang = lang
+    @staticmethod
+    def detect(text: str):
 
-    def get_text(self, key: str, default=""):
-        # Placeholder for translation dictionary lookup
-        return default or key
+        text = text.lower()
+
+        arabic = any("\u0600" <= c <= "\u06FF" for c in text)
+
+        if arabic:
+            return "ar"
+
+        english_words = [
+            "hello",
+            "thanks",
+            "please",
+            "how",
+            "what",
+            "where",
+        ]
+
+        if any(word in text for word in english_words):
+            return "en"
+
+        return "fr"

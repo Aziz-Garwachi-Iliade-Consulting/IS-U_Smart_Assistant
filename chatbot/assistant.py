@@ -1,15 +1,28 @@
 """
-IS-U Smart Assistant - Core Assistant Logic
-Handles conversation management and response generation.
+Assistant principal.
 """
 
+from chatbot.conversation_manager import ConversationManager
+from chatbot.language_manager import LanguageManager
+from services.ai_service import AIService
 
-class ISUAssistant:
-    """Main assistant class for IS-U Smart Assistant."""
+
+class Assistant:
 
     def __init__(self):
-        pass
 
-    def ask(self, question: str) -> str:
-        """Process a user question and return a response."""
-        raise NotImplementedError
+        self.ai = AIService()
+
+        self.history = ConversationManager()
+
+        self.language = LanguageManager()
+
+    def ask(self, question: str):
+
+        self.history.add_user_message(question)
+
+        answer = self.ai.ask(question)
+
+        self.history.add_assistant_message(answer)
+
+        return answer
