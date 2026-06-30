@@ -21,9 +21,11 @@ venv/
 data/uploads/*
 data/processed/*
 data/chroma_db/*
+data/logs/*
 !data/uploads/.gitkeep
 !data/processed/.gitkeep
 !data/chroma_db/.gitkeep
+!data/logs/.gitkeep
 
 # OS
 .DS_Store

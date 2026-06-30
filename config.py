@@ -1,20 +1,57 @@
 """
-Configuration settings for the IS-U Smart Assistant.
+=========================================================
+IS-U Smart Assistant
+Configuration centrale de l'application
+=========================================================
 """
 
-import os
-from dotenv import load_dotenv
+from pathlib import Path
 
-load_dotenv()
 
-SAP_CONFIG = {
-    "client": os.getenv("SAP_CLIENT", "100"),
-    "user": os.getenv("SAP_USER", ""),
-    "password": os.getenv("SAP_PASSWORD", ""),
-    "host": os.getenv("SAP_HOST", ""),
-    "sysnr": os.getenv("SAP_SYSNR", "00"),
-}
+# =========================================================
+# Répertoires du projet
+# =========================================================
 
-LLAMA_API_URL = os.getenv("LLAMA_API_URL", "http://localhost:11434")
-EMBEDDING_MODEL = os.getenv("EMBEDDING_MODEL", "all-MiniLM-L6-v2")
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+ROOT_DIR = Path(__file__).parent
+
+DATA_DIR = ROOT_DIR / "data"
+
+UPLOAD_DIR = DATA_DIR / "uploads"
+
+VECTOR_DB_DIR = DATA_DIR / "vector_db"
+
+LOG_DIR = DATA_DIR / "logs"
+
+
+# =========================================================
+# LLM
+# =========================================================
+
+OLLAMA_MODEL = "llama3:8b"
+
+OLLAMA_HOST = "http://localhost:11434"
+
+
+# =========================================================
+# Interface
+# =========================================================
+
+APP_NAME = "IS-U Smart Assistant"
+
+VERSION = "0.1.0"
+
+DEFAULT_LANGUAGE = "fr"
+
+
+# =========================================================
+# Documents
+# =========================================================
+
+SUPPORTED_EXTENSIONS = [
+    ".xml",
+    ".pdf",
+    ".docx",
+    ".xlsx",
+    ".csv",
+    ".json",
+]

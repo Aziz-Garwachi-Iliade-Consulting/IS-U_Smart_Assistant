@@ -1,15 +1,20 @@
 """
-Central logger utility for the assistant.
+=========================================================
+Logger central
+=========================================================
 """
 
-import logging
+from loguru import logger
 
-def setup_logger(name: str) -> logging.Logger:
-    logger = logging.getLogger(name)
-    if not logger.handlers:
-        handler = logging.StreamHandler()
-        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
-        logger.setLevel(logging.INFO)
-    return logger
+from config import LOG_DIR
+
+LOG_DIR.mkdir(parents=True, exist_ok=True)
+
+logger.add(
+    LOG_DIR / "assistant.log",
+    rotation="10 MB",
+    retention="10 days",
+    level="INFO",
+)
+
+app_logger = logger
